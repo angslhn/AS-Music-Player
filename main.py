@@ -34,7 +34,8 @@ def selection_sort(songs: list[str]) -> list[str]:
     return songs
 
 def list_songs(songs: list[str]) -> None:
-    print("  Daftar Lagu Tersedia")
+    print("  [X] Daftar Lagu Tersedia")
+    print("  ────────────────────────")
     for no, song in enumerate(songs, start = 1):
         print(f"   {no}. {song[0:-4]}")
     
@@ -57,14 +58,14 @@ def play_songs(selected: int, path: str, stack_songs: list[str]):
         while pygame.mixer.music.get_busy():
             if keyboard.is_pressed("esc"):
                 pygame.mixer.music.stop()
-                print("\n  ~ Pemutaran lagu dihentikan.")
+                print("\n  [INFO] Pemutaran lagu dihentikan.")
                 return
             
             time.sleep(0.1)
             
         index += 1
     
-    print("  Semua lagu telah selesai diputar.")
+    print("\n  [INFO] Semua lagu telah selesai diputar.")
 
 def main():
     songs_path = "./Songs"
@@ -82,16 +83,16 @@ def main():
     
     list_songs(stack_songs)
     
-    print("─" * 84)
+    print("  ────────────────────────")
     
     try:
-        selected = int(input("  Pilih lagu = "))
+        selected = int(input("  [X] Pilih Lagu = "))
         
         if selected < 1 or selected > len(stack_songs):
             print("  Lagu yang anda pilih tidak ditemukan.")
             return
     except ValueError:
-        print("  Masukan untuk pilihan lagu harus angka sesuai daftar lagu.")
+        print("  Masukan untuk pilihan lagu hanya angka dan sesuai daftar lagu.")
         return
     
     print("─" * 84)
